@@ -15,7 +15,7 @@ import static org.testng.Assert.*;
 public class webMobileTests extends BaseTest {
 
     public static final String REQUEST_TEXT = "EPAM";
-    public static final int EXPECTED_RESULT = 10;
+    public static final int EXPECTED_RESULT = 7;
 
     @Test(groups = {"web"}, description = "Check that Google has result for request")
     public void simpleWebTest() throws InterruptedException, IllegalAccessException, NoSuchFieldException, InstantiationException {

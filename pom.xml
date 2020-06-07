@@ -8,6 +8,10 @@
     <artifactId>EkaterinaDubininaMobile</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <token>5bb0ca56-22ac-43a0-a4ac-bebb2accc11d</token>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.appium</groupId>
@@ -37,7 +41,12 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
+                        <!-- for local testing
                         <ts.appium>http://localhost:4723/wd/hub</ts.appium>
+                        -->
+                        <!--for Epam Cloud testing-->
+                        <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
+
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -72,6 +81,45 @@
                 <suite.file>./src/test/resources/webTNG.xml</suite.file>
             </properties>
         </profile>
-    </profiles>
 
+        <profile>
+            <id>cloudNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>cloudWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudWebTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iosCloudNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/iosCloudNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iosCloudWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/iosCloudWebTNG.xml</suite.file>
+            </properties>
+        </profile>
+    </profiles>
 </project>
