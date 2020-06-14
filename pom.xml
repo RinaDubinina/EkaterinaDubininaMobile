@@ -8,10 +8,6 @@
     <artifactId>EkaterinaDubininaMobile</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <token>5bb0ca56-22ac-43a0-a4ac-bebb2accc11d</token>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>io.appium</groupId>
@@ -45,7 +41,7 @@
                         <ts.appium>http://localhost:4723/wd/hub</ts.appium>
                         -->
                         <!--for Epam Cloud testing-->
-                        <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
+                        <ts.appium>https://EPM-TSTF:${env.TOKEN}@mobilecloud.epam.com/wd/hub</ts.appium>
 
                     </systemPropertyVariables>
                 </configuration>
