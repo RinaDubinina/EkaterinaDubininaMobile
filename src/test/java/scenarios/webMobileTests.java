@@ -14,9 +14,6 @@ import static org.testng.Assert.*;
 
 public class webMobileTests extends BaseTest {
 
-    public static final String REQUEST_TEXT = "EPAM";
-    public static final int EXPECTED_RESULT = 7;
-
     @Test(groups = {"web"}, description = "Check that Google has result for request")
     public void simpleWebTest() throws InterruptedException, IllegalAccessException, NoSuchFieldException, InstantiationException {
         getDriver().get(PropertyReader.getProperties().getProperty("url")); // open Google homepage
@@ -25,12 +22,10 @@ public class webMobileTests extends BaseTest {
         new WebDriverWait(getDriver(), 10).until(
                 wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
         );
-        getPo().getWelement("searchField").sendKeys(REQUEST_TEXT);
+        getPo().getWelement("searchField").sendKeys(PropertyReader.getProperties().getProperty("requestText"));
         getPo().getWelement("searchButton").click();
-        List<WebElement> actualResults = getPo().getWelements("results");
-        int actualAmountResults = actualResults.size(); //results
-        assertTrue(!actualResults.isEmpty());//check that result not empty
-        assertEquals(actualAmountResults, EXPECTED_RESULT, "Google don't find expected amount of results for \"EPAM\" request");//check amount results
+        List<WebElement> results = getPo().getWelements("results");
+        assertTrue(!results.isEmpty());//check that result not empty
     }
 
 }

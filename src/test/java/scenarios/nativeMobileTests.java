@@ -7,7 +7,7 @@ import utill.PropertyReader;
 
 public class nativeMobileTests extends BaseTest {
 
-    public static final String expectedPageName = "BudgetActivity";
+   // public static final String expectedPageName = "BudgetActivity";
 
     @Test(groups = {"native"}, description = "This test register new user, log in, cheek the user is logged in")
     public void registerNativeTest() throws IllegalAccessException, NoSuchFieldException, InstantiationException {
@@ -23,7 +23,7 @@ public class nativeMobileTests extends BaseTest {
         getPo().getWelement("signInButton").click();
         String actualPageName=getPo().getWelement("pageName").getText();
 
-        Assert.assertEquals(actualPageName, expectedPageName,"The page has correct name");
+        Assert.assertEquals(actualPageName, PropertyReader.getProperties().getProperty("pageName"),"The page has correct name");
 
 
 
